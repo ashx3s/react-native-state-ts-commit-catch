@@ -2,7 +2,19 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { TodoItem } from "./TodoItem";
 import { colors } from "../assets/theme";
 
-export function TodoList({ todos, onDeleteItem }) {
+type Todo = {
+  id: string;
+  title: string;
+  description: string;
+  onDeleteItem: (id: string) => void;
+};
+
+type TodoListProps = {
+  todos: Todo[];
+  onDeleteItem: (id: string) => void;
+};
+
+export function TodoList({ todos, onDeleteItem }: TodoListProps) {
   return (
     <View style={styles.todoListContainer}>
       <Text style={styles.todoSectionTitle}>Your Todos</Text>

@@ -5,21 +5,23 @@ import { generateId } from "../utils/generateId";
 
 export function TodoSection() {
   // TODO (state): Declare todos as state
-  const todos = [
+  const [todos, setTodos] = useState([
     { id: "1", text: "Learn useState" },
     {
       id: "2",
       text: "Practice typescript refactoring",
     },
-  ];
+  ]);
 
   const addTodoItem = (title) => {
     const newTodo = { id: generateId(), title };
     // add item to the existing array
+    setTodos([...todos, newTodo]);
   };
 
   const deleteTodoItem = (id) => {
     // Delete item state logic
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (

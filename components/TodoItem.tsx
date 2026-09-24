@@ -5,7 +5,7 @@ export function TodoItem({ text, id }) {
     <View>
       <Pressable
         android_ripple={{ color: "white" }}
-        press={({ pressed }) => pressed && styles.pressedItem}
+        press={({ pressed }) => pressed && styles.pressedItem} 
         onPress={props.onDeleteItem.bind(this, id)}
       >
         <Text style={styles.todoItemText}>{text}</Text>

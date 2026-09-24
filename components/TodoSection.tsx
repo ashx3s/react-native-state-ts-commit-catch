@@ -3,7 +3,6 @@ import { StyleSheet, View } from "react-native";
 import { TodoInput } from "./TodoInput";
 import { TodoList } from "./TodoList";
 import { generateId } from "../utils/generateId";
-import { useState } from "react";
 
 type Todo = {
   id: string;

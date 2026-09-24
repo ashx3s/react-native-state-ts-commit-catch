@@ -5,16 +5,19 @@ import { colors } from "../assets/theme";
 
 export function TodoInput({ onAddTodo }) {
   // TODO (state): replace this with a useState hook so the TextInput is
-  const enteredTodo = "placeholder Text";
+  const [enteredTodo, setEnteredTodo] = useState("placeholder Text");
 
   // TODO (state): update enteredTodo with the text the user typed.
-  const inputHandler = (text) => {};
+  const inputHandler = (text) => {
+    setEnteredTodo(text);
+  };
 
   const addTodoHandler = () => {
     // TODO (logic): call onAddTodo(enteredTodo) to send the new todo up
     // to TodoSection
     // TODO (state): clear the input field afterwards (reset enteredTodo
     // back to "")
+    setEnteredTodo("");
   };
 
   const cancelHandler = () => {

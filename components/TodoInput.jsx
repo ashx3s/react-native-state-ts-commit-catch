@@ -5,35 +5,49 @@ import { colors } from "../assets/theme";
 
 export function TodoInput({ onAddTodo }) {
   // TODO (state): replace this with a useState hook so the TextInput is
-  const enteredTodo = "placeholder Text";
+  const [enteredTodo, setEnteredTodo] = useState("");
 
   // TODO (state): update enteredTodo with the text the user typed.
-  const inputHandler = (text) => {};
+  const inputHandler = (text) => {
+    setEnteredTodo(text);
+  };
 
   const addTodoHandler = () => {
     // TODO (logic): call onAddTodo(enteredTodo) to send the new todo up
     // to TodoSection
     // TODO (state): clear the input field afterwards (reset enteredTodo
     // back to "")
+    if(enteredTodo.trim().length === 0){
+      return;
+    }
+    onAddTodo(enteredTodo);
+    setEnteredTodo("");
   };
 
   const cancelHandler = () => {
     // TODO (state): clear the input field without adding a todo
+    setEnteredTodo("");
   };
 
   return (
     <View style={styles.inputSection}>
       <Text style={styles.inputSectionTitle}>Add a Todo</Text>
       {/* TODO: implement onChangeText, value, placeholder, placeholderTextColor, and style */}
-      <TextInput />
+      <TextInput 
+        onChangeText = {inputHandler}
+        value = {enteredTodo}
+        placeholder = "Buy groceries"
+        placeholderTextColor = {colors.overlay}
+        style={styles.textInput}
+      />
       <Text style={styles.inputHint}>
         Type a task above, then tap Add Todo.
       </Text>
       <View style={styles.buttonContainer}>
         {/* TODO: wire onPress to addTodoHandler */}
-        <AppButton text="Add Todo" />
+        <AppButton text="Add Todo"  onPress = {addTodoHandler}/>
         {/* TODO: wire onPress to cancelHandler */}
-        <AppButton text="Cancel" />
+        <AppButton text="Cancel" onPress = {cancelHandler} />
       </View>
     </View>
   );

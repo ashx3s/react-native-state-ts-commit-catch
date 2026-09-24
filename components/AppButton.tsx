@@ -1,7 +1,13 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { colors } from "../assets/theme";
 
-export function AppButton({ text, onPress }) {
+export function AppButton({
+  text,
+  onPress,
+}: {
+  text: string;
+  onPress: () => void;
+}) {
   return (
     <Pressable
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}

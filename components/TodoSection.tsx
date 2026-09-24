@@ -1,30 +1,28 @@
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { TodoInput } from "./TodoInput";
 import { TodoList } from "./TodoList";
 import { generateId } from "../utils/generateId";
 import { useState } from "react";
 
+type Todo = {
+  id: string;
+  title: string;
+};
+
 export function TodoSection() {
-  // TODO (state): Declare todos as state
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState<Todo[]>([
     { id: "1", title: "Learn useState" },
-    {
-      id: "2",
-      title: "Practice typescript refactoring",
-    },
+    { id: "2", title: "Practice typescript refactoring" },
   ]);
 
-  const addTodoItem = (title) => {
-    const newTodo = { id: generateId(), title };
-    // add item to the existing array
-    setTodos((currentTodos) => [...currentTodos, newTodo]);
+  const addTodoItem = (title: string): void => {
+    const newTodo: Todo = { id: generateId(), title };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
-  const deleteTodoItem = (id) => {
-    // Delete item state logic
-    setTodos((currentTodos) =>
-      currentTodos.filter((todo) => todo.id !== id),
-    );
+  const deleteTodoItem = (id: string): void => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   return (
